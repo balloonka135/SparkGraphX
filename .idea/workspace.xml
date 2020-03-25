@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f926620-2fd6-4f38-885d-f6d99fed4543" name="Default Changelist" comment="" />
+    <list default="true" id="5f926620-2fd6-4f38-885d-f6d99fed4543" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark_graphs_II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spark_graphs_II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exercise_2/Exercise_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exercise_2/Exercise_2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exercise_3/Exercise_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exercise_3/Exercise_3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$VProg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$VProg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$merge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$merge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$sendMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1$sendMsg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_1/Exercise_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$VProg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$VProg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$merge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$merge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$sendMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2$sendMsg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_2/Exercise_2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_3/Exercise_3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_3/Exercise_3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_4/Exercise_4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_4/Exercise_4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exercise_4/Exercise_4_warmup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exercise_4/Exercise_4_warmup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Utils.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1Z4V1xb25NSLYX5TKdzKRf3Qr71" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -16,13 +49,20 @@
     <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/graphframes-0.5.0-spark2.1-s_2.10.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.exercise1">
+  <component name="RunManager" selected="Application.exercise2">
     <configuration name="exercise1" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="spark_graphs_II" />
@@ -81,13 +121,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584098141782</updated>
+      <workItem from="1585068568393" duration="3330000" />
+      <workItem from="1585135703785" duration="16312000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584098487234">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="320" y="115" key="#Project_Structure" timestamp="1585072468188">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="320" y="115" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1585072468188" />
+    <state x="209" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585072445556">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="209" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1585072445556" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1584098487234" />
     <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584098413119">
       <screen x="0" y="0" width="1536" height="824" />
@@ -97,25 +147,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584098552458" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584466804463">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1585160282832">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1585160282832" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584466804463" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1584466804463">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1398" height="2" key="GridCell.Tab.0.center" timestamp="1585160282830">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1585160282830" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584466804463" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1584466804463">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1398" height="2" key="GridCell.Tab.0.left" timestamp="1585160282830">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1585160282830" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584466804463" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1584466804463">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1398" height="2" key="GridCell.Tab.0.right" timestamp="1585160282832">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1585160282832" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584466804463" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1584098557949">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="258" y="112" key="Maven.ArtifactSearchDialog" timestamp="1585155249902">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="258" y="112" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1585155249902" />
+    <state x="233" y="23" width="1024" height="811" key="SettingsEditor" timestamp="1585068883438">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="233" y="23" width="1024" height="811" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1585068883438" />
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584098557949" />
+    <state x="399" y="261" key="com.intellij.ide.util.TipDialog" timestamp="1585136283049">
+      <screen x="0" y="23" width="1440" height="811" />
+    </state>
+    <state x="399" y="261" key="com.intellij.ide.util.TipDialog/0.23.1440.811@0.23.1440.811" timestamp="1585136283049" />
+    <state x="457" y="329" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585068830389">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="457" y="329" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1585068830389" />
   </component>
 </project>

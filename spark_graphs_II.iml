@@ -11,6 +11,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="graphframes-0.5.0-spark2.1-s_2.10" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/graphframes-0.5.0-spark2.1-s_2.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.spark:spark-core_2.10:2.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.avro:avro:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" level="project" />
@@ -175,6 +185,5 @@
     <orderEntry type="library" name="Maven: com.typesafe.scala-logging:scala-logging-slf4j_2.10:2.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe.scala-logging:scala-logging-api_2.10:2.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.10.4" level="project" />
-    <orderEntry type="library" name="graphframes-0.5.0-spark2.1-s_2.10" level="project" />
   </component>
 </module>
