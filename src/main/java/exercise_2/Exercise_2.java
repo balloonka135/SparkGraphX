@@ -49,10 +49,6 @@ public class Exercise_2 {
             Integer edgeValue = triplet.attr.intValue();
             Integer sentValue = edgeValue + sourceVertex._2;
 
-            System.out.println("Sourse: " + sourceVertex._1 + " with value " + sourceVertex._2);
-            System.out.println("Dest: " + dstVertex._1 + " with value " + dstVertex._2);
-            System.out.println("Edge: " + edgeValue);
-
             if ((sentValue >= dstVertex._2) || (sourceVertex._2 == Integer.MAX_VALUE)) {   // if source vertex value is bigger than dst vertex
                 return JavaConverters.asScalaIteratorConverter(new ArrayList<Tuple2<Object,Integer>>().iterator()).asScala();
             } else {

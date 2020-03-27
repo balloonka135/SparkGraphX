@@ -7,14 +7,15 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.graphx.*;
 import org.apache.spark.sql.SQLContext;
 import org.apache.spark.storage.StorageLevel;
+import scala.Array;
 import scala.Tuple2;
-import scala.Tuple3;
 import scala.collection.Iterator;
 import scala.collection.JavaConverters;
 import scala.reflect.ClassTag$;
 import scala.runtime.AbstractFunction1;
 import scala.runtime.AbstractFunction2;
 import scala.runtime.AbstractFunction3;
+import shapeless.Tuple;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,46 +36,41 @@ public class Exercise_3 {
             .put(6l, "F")
             .build();
 
-    private static class VProg extends AbstractFunction3<Long,Integer,Integer,Integer> implements Serializable {
+    private static class VProg extends AbstractFunction3<Long, Tuple2<Integer, ArrayList>, Tuple2<Integer, ArrayList>, Tuple2<Integer, ArrayList>> implements Serializable {
         @Override
-        public Integer apply(Long vertexID, Integer vertexValue, Integer message) {
-            // receives a message with a shortest path to it
-            // if the message of max value, live current value
-            // else min from the received
+        public Tuple2<Integer, ArrayList> apply(Long vertexID, Tuple2<Integer, ArrayList> vertexValue, Tuple2<Integer, ArrayList> message) {
 
-            if (message == Integer.MAX_VALUE) {             // superstep 0
+            if (message._1 == Integer.MAX_VALUE) {             // superstep 0
                 return vertexValue;
             } else {                                        // superstep > 0
-                return Math.min(vertexValue,message);
+                if (vertexValue._1 == Math.min(vertexValue._1, message._1)) {
+                    return vertexValue;
+                } else {
+                    return message;
+                }
             }
         }
     }
 
-    private static class sendMsg extends AbstractFunction1<EdgeTriplet<Integer,Integer>, Iterator<Tuple3<Object,Integer, ArrayList>>> implements Serializable {
+    private static class sendMsg extends AbstractFunction1<EdgeTriplet<Tuple2<Integer, ArrayList>,Integer>, Iterator<Tuple2<Object, Tuple2<Integer, ArrayList>>>> implements Serializable {
         @Override
-        public Iterator<Tuple3<Object, Integer, ArrayList>> apply(EdgeTriplet<Integer, Integer> triplet) {
+        public Iterator<Tuple2<Object, Tuple2<Integer, ArrayList>>> apply(EdgeTriplet<Tuple2<Integer, ArrayList>, Integer> triplet) {
             // if the path value (vertex value + edge value) to the next vertex
             // is smaller than the assigned value of that vertex, send it
 
-            Tuple3<Object,Integer,ArrayList> sourceVertex = triplet.toTuple()._1();
-            Tuple3<Object,Integer,ArrayList> dstVertex = triplet.toTuple()._2();
+            Tuple2<Object, Tuple2<Integer, ArrayList>> sourceVertex = triplet.toTuple()._1();
+            Tuple2<Object, Tuple2<Integer, ArrayList>> dstVertex = triplet.toTuple()._2();
             Integer edgeValue = triplet.attr.intValue(); // edge weight value
-            Integer sentValue = edgeValue + sourceVertex._2(); // value to be sent to the dest vertex
+            Integer sentValue = edgeValue + sourceVertex._2._1; // value to be sent to the dest vertex
 
             // get arraylist from source vertex and add source vertex label to it
-            ArrayList<String> pathVertices = sourceVertex._3(); // list of vertices on the path
-            pathVertices.add(labels.get(sourceVertex._1()));
+            ArrayList<String> pathVertices = sourceVertex._2._2; // list of vertices on the path
+            pathVertices.add(labels.get(dstVertex._1()));
 
-//
-//            System.out.println("Sourse: " + sourceVertex._1 + " with value " + sourceVertex._2);
-//            System.out.println("Dest: " + dstVertex._1 + " with value " + dstVertex._2);
-//            System.out.println("Edge: " + edgeValue);
-
-            if ((sentValue >= dstVertex._2()) || (sourceVertex._2() == Integer.MAX_VALUE)) {   // if source vertex value is bigger than dst vertex
-                return JavaConverters.asScalaIteratorConverter(new ArrayList<Tuple3<Object,Integer, ArrayList>>().iterator()).asScala();
+            if ((sentValue >= dstVertex._2()._1) || (sourceVertex._2()._1 == Integer.MAX_VALUE)) {   // if source vertex value is bigger than dst vertex
+                return JavaConverters.asScalaIteratorConverter(new ArrayList<Tuple2<Object, Tuple2<Integer, ArrayList>>>().iterator()).asScala();
             } else {
-                // ---------- send also array list of path vertices
-                return JavaConverters.asScalaIteratorConverter(Arrays.asList(new Tuple3<Object,Integer, ArrayList>(triplet.dstId(),sentValue, pathVertices)).iterator()).asScala();
+                return JavaConverters.asScalaIteratorConverter(Arrays.asList(new Tuple2<Object, Tuple2<Integer, ArrayList>>(triplet.dstId(), new Tuple2(sentValue, pathVertices))).iterator()).asScala();
             }
         }
     }
@@ -96,13 +92,13 @@ public class Exercise_3 {
                 .put(6l, "F")
                 .build();
 
-        List<Tuple3<Object,Integer, ArrayList>> vertices = Lists.newArrayList(
-                new Tuple3<Object,Integer, ArrayList>(1l,0, new ArrayList<String>()),
-                new Tuple3<Object,Integer, ArrayList>(2l,Integer.MAX_VALUE, new ArrayList<String>()),
-                new Tuple3<Object,Integer, ArrayList>(3l,Integer.MAX_VALUE, new ArrayList<String>()),
-                new Tuple3<Object,Integer, ArrayList>(4l,Integer.MAX_VALUE, new ArrayList<String>()),
-                new Tuple3<Object,Integer, ArrayList>(5l,Integer.MAX_VALUE, new ArrayList<String>()),
-                new Tuple3<Object,Integer, ArrayList>(6l,Integer.MAX_VALUE, new ArrayList<String>())
+        List<Tuple2<Object, Tuple2<Integer, ArrayList>>> vertices = Lists.newArrayList(
+                new Tuple2<Object, Tuple2<Integer, ArrayList>>(1l, new Tuple2(0, new ArrayList<String>(Arrays.asList("A")))),
+                new Tuple2<Object, Tuple2<Integer, ArrayList>>(2l, new Tuple2(Integer.MAX_VALUE, new ArrayList<String>())),
+                new Tuple2<Object, Tuple2<Integer, ArrayList>>(3l, new Tuple2(Integer.MAX_VALUE, new ArrayList<String>())),
+                new Tuple2<Object, Tuple2<Integer, ArrayList>>(4l, new Tuple2(Integer.MAX_VALUE, new ArrayList<String>())),
+                new Tuple2<Object, Tuple2<Integer, ArrayList>>(5l, new Tuple2(Integer.MAX_VALUE, new ArrayList<String>())),
+                new Tuple2<Object, Tuple2<Integer, ArrayList>>(6l, new Tuple2(Integer.MAX_VALUE, new ArrayList<String>()))
         );
         List<Edge<Integer>> edges = Lists.newArrayList(
                 new Edge<Integer>(1l,2l, 4), // A --> B (4)
@@ -114,27 +110,26 @@ public class Exercise_3 {
                 new Edge<Integer>(4l, 6l, 11) // D --> F (11)
         );
 
-        JavaRDD<Tuple3<Object,Integer, ArrayList>> verticesRDD = ctx.parallelize(vertices);
+        JavaRDD<Tuple2<Object, Tuple2<Integer, ArrayList>>> verticesRDD = ctx.parallelize(vertices);
         JavaRDD<Edge<Integer>> edgesRDD = ctx.parallelize(edges);
 
-        Graph<Integer,Integer> G = Graph.apply(verticesRDD.rdd(),edgesRDD.rdd(),1, StorageLevel.MEMORY_ONLY(), StorageLevel.MEMORY_ONLY(),
-                scala.reflect.ClassTag$.MODULE$.apply(Integer.class),scala.reflect.ClassTag$.MODULE$.apply(Integer.class));
+        Graph<Tuple2<Integer, ArrayList>, Integer> G = Graph.apply(verticesRDD.rdd(),edgesRDD.rdd(),new Tuple2<Integer, ArrayList>(1, new ArrayList<String>()), StorageLevel.MEMORY_ONLY(), StorageLevel.MEMORY_ONLY(),
+                ClassTag$.MODULE$.apply(Tuple2.class), ClassTag$.MODULE$.apply(Integer.class));
 
-        GraphOps ops = new GraphOps(G, scala.reflect.ClassTag$.MODULE$.apply(Integer.class),scala.reflect.ClassTag$.MODULE$.apply(Integer.class));
+        GraphOps ops = new GraphOps(G, scala.reflect.ClassTag$.MODULE$.apply(Tuple2.class),scala.reflect.ClassTag$.MODULE$.apply(Integer.class));
 
-        ops.pregel(Integer.MAX_VALUE,
+        ops.pregel(new Tuple2(Integer.MAX_VALUE, new ArrayList<String>()),
                 Integer.MAX_VALUE,
                 EdgeDirection.Out(),
                 new VProg(),
                 new sendMsg(),
                 new merge(),
-                ClassTag$.MODULE$.apply(Integer.class))
+                ClassTag$.MODULE$.apply(Tuple2.class))
                 .vertices()
                 .toJavaRDD()
                 .foreach(v -> {
-                    Tuple3<Object,Integer,ArrayList> vertex = (Tuple3<Object,Integer,ArrayList>)v;
-                    // ---------- add new vertex attr "path" with an array of vertices and print it
-                    System.out.println("Minimum cost to get from "+labels.get(1l)+" to "+labels.get(vertex._1())+" is "+vertex._2());
+                    Tuple2<Object, Tuple2<Integer, ArrayList>> vertex = (Tuple2<Object, Tuple2<Integer, ArrayList>>)v;
+                    System.out.println("Minimum cost to get from "+labels.get(1l)+" to "+labels.get(vertex._1())+" is [" + String.join(", ", vertex._2()._2) + "] with cost " + vertex._2()._1);
                 });
     }
 
