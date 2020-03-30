@@ -26,10 +26,6 @@ public class Exercise_2 {
     private static class VProg extends AbstractFunction3<Long,Integer,Integer,Integer> implements Serializable {
         @Override
         public Integer apply(Long vertexID, Integer vertexValue, Integer message) {
-            // receives a message with a shortest path to it
-            // if the message of max value, live current value
-            // else min from the received
-
             if (message == Integer.MAX_VALUE) {             // superstep 0
                 return vertexValue;
             } else {                                        // superstep > 0
@@ -41,15 +37,12 @@ public class Exercise_2 {
     private static class sendMsg extends AbstractFunction1<EdgeTriplet<Integer,Integer>, Iterator<Tuple2<Object,Integer>>> implements Serializable {
         @Override
         public Iterator<Tuple2<Object, Integer>> apply(EdgeTriplet<Integer, Integer> triplet) {
-            // if the path value (vertex value + edge value) to the next vertex
-            // is smaller than the assigned value of that vertex, send it
-
             Tuple2<Object,Integer> sourceVertex = triplet.toTuple()._1();
             Tuple2<Object,Integer> dstVertex = triplet.toTuple()._2();
             Integer edgeValue = triplet.attr.intValue();
             Integer sentValue = edgeValue + sourceVertex._2;
 
-            if ((sentValue >= dstVertex._2) || (sourceVertex._2 == Integer.MAX_VALUE)) {   // if source vertex value is bigger than dst vertex
+            if ((sentValue >= dstVertex._2) || (sourceVertex._2 == Integer.MAX_VALUE)) {
                 return JavaConverters.asScalaIteratorConverter(new ArrayList<Tuple2<Object,Integer>>().iterator()).asScala();
             } else {
                 return JavaConverters.asScalaIteratorConverter(Arrays.asList(new Tuple2<Object,Integer>(triplet.dstId(),sentValue)).iterator()).asScala();

@@ -55,19 +55,15 @@ public class Exercise_3 {
     private static class sendMsg extends AbstractFunction1<EdgeTriplet<Tuple2<Integer, ArrayList>,Integer>, Iterator<Tuple2<Object, Tuple2<Integer, ArrayList>>>> implements Serializable {
         @Override
         public Iterator<Tuple2<Object, Tuple2<Integer, ArrayList>>> apply(EdgeTriplet<Tuple2<Integer, ArrayList>, Integer> triplet) {
-            // if the path value (vertex value + edge value) to the next vertex
-            // is smaller than the assigned value of that vertex, send it
-
             Tuple2<Object, Tuple2<Integer, ArrayList>> sourceVertex = triplet.toTuple()._1();
             Tuple2<Object, Tuple2<Integer, ArrayList>> dstVertex = triplet.toTuple()._2();
             Integer edgeValue = triplet.attr.intValue(); // edge weight value
             Integer sentValue = edgeValue + sourceVertex._2._1; // value to be sent to the dest vertex
 
-            // get arraylist from source vertex and add source vertex label to it
             ArrayList<String> pathVertices = sourceVertex._2._2; // list of vertices on the path
             pathVertices.add(labels.get(dstVertex._1()));
 
-            if ((sentValue >= dstVertex._2()._1) || (sourceVertex._2()._1 == Integer.MAX_VALUE)) {   // if source vertex value is bigger than dst vertex
+            if ((sentValue >= dstVertex._2()._1) || (sourceVertex._2()._1 == Integer.MAX_VALUE)) {
                 return JavaConverters.asScalaIteratorConverter(new ArrayList<Tuple2<Object, Tuple2<Integer, ArrayList>>>().iterator()).asScala();
             } else {
                 return JavaConverters.asScalaIteratorConverter(Arrays.asList(new Tuple2<Object, Tuple2<Integer, ArrayList>>(triplet.dstId(), new Tuple2(sentValue, pathVertices))).iterator()).asScala();

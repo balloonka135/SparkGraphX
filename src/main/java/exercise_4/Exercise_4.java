@@ -51,8 +51,8 @@ public class Exercise_4 {
 
 
 
-		File file1 = new File("/Users/rodaina/Documents/SparkGraphXassignment/target/classes/wiki-vertices.txt");
-		File file2 = new File("/Users/rodaina/Documents/SparkGraphXassignment/target/classes/wiki-edges.txt");
+		File file1 = new File("/Users/irinanazarchuk/Documents/uni/SDM/labs/SparkGraphXassignment/target/classes/wiki-vertices.txt");
+		File file2 = new File("/Users/irinanazarchuk/Documents/uni/SDM/labs/SparkGraphXassignment/target/classes/wiki-edges.txt");
 
 		Scanner input = new Scanner(file1);
 		input.useDelimiter("\n");
@@ -108,7 +108,7 @@ public class Exercise_4 {
 
 
 
-		Dataset pr =gf.pageRank().maxIter(20).resetProbability(0.15).run().vertices();
+		Dataset pr =gf.pageRank().maxIter(20).resetProbability(0.85).run().vertices();
 		pr.createOrReplaceTempView("pageranks");
 
 		sqlCtx.sql("select * from pageranks order by pagerank desc").show(10);
