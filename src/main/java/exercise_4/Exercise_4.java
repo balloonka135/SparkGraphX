@@ -108,7 +108,7 @@ public class Exercise_4 {
 
 
 
-		Dataset pr =gf.pageRank().maxIter(20).resetProbability(0.85).run().vertices();
+		Dataset pr =gf.pageRank().maxIter(20).resetProbability(0.15).run().vertices();
 		pr.createOrReplaceTempView("pageranks");
 
 		sqlCtx.sql("select * from pageranks order by pagerank desc").show(10);
